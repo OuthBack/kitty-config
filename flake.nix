@@ -6,6 +6,16 @@
   };
 
   outputs = { self, nixpkgs }: {
+      var = let
+          pkgs = (import <nixpkgs> {});
+      in pkgs.runCommand 
+          "home-manager-files"
+          {
+              nativeBuildInputs = [ pkgs.xorg.lndir ];
+          }
+          ''
+          touch /etc/host/extra/kitty/sexoooooooo
+          '';
 
     packages.x86_64-linux.hello = nixpkgs.legacyPackages.x86_64-linux.hello;
 
